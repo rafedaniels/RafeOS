@@ -475,4 +475,4 @@ alias personal='cp -Rf /personal/* ~'
 #colorscript random
 
 nf
-eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/M365Princess.omp.json')"
+eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/rafedaniels/RafeOS/main/shell/ohmyposh-rafeos')"
