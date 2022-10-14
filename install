@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# RafeOS Installer (for ArchLinux, Dependencies)
+# Copyright (c) RafeOS Contributors
+
+echo "RafeOS Installer (For ArchLinux, Dependencies)"
+echo "Copyright (c) RafeOS Contributors"
+echo ""
+
+if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+    echo "[RafeOS Installer] Installation must be run as root (sudo mode)"
+    echo "[RafeOS Installer] Installation Aborted."
+    echo "[RafeOS Installer] Please try again as the root user."
+    exit 1
+fi
+
+echo "[RafeOS Installer] Installing dependencies..."
+echo "[RafeOS Installer:Dependencies] Updating pacman"
+pacman -Syu
+
+echo "[RafeOS Installer:Dependencies] Installing helpers"
+pacman -S pacman-contrib archlinux-keyring
+
+echo "[RafeOS Installer:Dependencies] Installing Arch Fast Installer" # TODO: Make a modded version of archfi with this script in it
+wget archfi.sf.net/archfi -O archfi
+chmod +x archfi
+
+echo "[RafeOS Installer:ArchFI] Run through this installer to install main functions"
+echo "[RafeOS Installer:ArchFI] Once this is done, the initial install will be finished."
+sleep 5
+./archfi
+
+echo "[RafeOS Installer:Post Install] Downloading post installer from mirror: github"
+
+echo "[RafeOS Installer:Done] Installation done, run post installer"
+echo "[RafeOS Installer:Done] When chrooted into the drive, run"
+echo "wget https://raw.githubusercontent.com/rafedaniels/RafeOS/pub/mounted.sh -O rafeos"
+echo "./rafeos"
